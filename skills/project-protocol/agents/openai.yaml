@@ -1,0 +1,6 @@
+interface:
+  display_name: "Project Protocol"
+  short_description: "Keep durable work and agent handoffs recoverable"
+  default_prompt: "Use $project-protocol to continue this project's durable work or prepare a verified execution handoff."
+policy:
+  allow_implicit_invocation: true
