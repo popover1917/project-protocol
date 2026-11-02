@@ -1,11 +1,11 @@
 ---
 name: project-protocol
-description: Keep durable engineering work recoverable across agents and sessions; initialize project state, continue a Thread, or exchange an execution handoff. Ordinary queries and bounded edits need no protocol records.
+description: Keep durable engineering work recoverable across agents and sessions; initialize project state, continue a Thread, or exchange an execution handoff. Apply optional Codex quota rules on explicit request (请按照额度规则). Ordinary queries and bounded edits need no protocol records.
 metadata:
   short-description: Durable work with minimum context
 ---
 
-# Project Protocol 0.5
+# Project Protocol 0.6
 
 Keep only what another agent needs to continue useful work. Project provides
 background; Thread holds current work; Handoff and Completion carry an actual
@@ -23,6 +23,9 @@ Thread needs the goal, actual position, effective constraints, next step and fin
 conditions. Update it when these change, not after every operation. Replace superseded
 current instructions and link preserved history rather than layering overrides.
 Keep information where it is maintained and reference it rather than copy it.
+Identify each material's role and current baseline: requirements, reference, editable
+source and accepted deliverable are not interchangeable. Maintain a usable entry and
+old-to-new location mapping when moving materials; preservation alone is not access.
 Decisions and verification belong in this work or its engineering materials. Consultations are
 ordinary inputs; only authorized, adopted changes enter current state.
 
@@ -42,11 +45,20 @@ entry and return location; link or include additional materials as needed, keepi
 engineering originals and outputs where they are maintained.
 
 The receiver checks the actual project, current files and existing return before
-executing. Current engineering facts and user authority outrank snapshots. After
+executing. Current engineering facts and user authority outrank snapshots. A closed
+project or user stop is not reopened by an old ACTIVE marker, recurring prompt or
+retrospective suggestion. After
 execution, save Completion with actual results, changes, checks or unverified limits,
 and remaining work. The coordinating writer checks the result before updating Thread.
 An existing return is reconciled rather than replayed; further transfer uses current
 state. A missing return establishes neither execution nor success.
+
+The coordinator remains responsible for actual start, return, adoption, integration
+and usable delivery within continuing authorization. Writing an assignment is not
+starting it, and finishing one bounded package is not a new approval gate. Separate
+file identity and build checks from content, visual or task-specific acceptance;
+state which version and scope each conclusion covers. Preserve an external version
+break when editable source or change evidence is missing rather than invent lineage.
 
 If an interrupted executor cannot return, a separate diagnosis grounded in evidence
 can support authorized continuation. Preserve the original return or its absence, reconcile newer
@@ -64,18 +76,24 @@ An assignment finishing does not finish its Thread or Project. When a Thread's g
 is complete or the user stops it, retain its outcome and move its entire directory,
 including handoffs, to `.project/archive/TH-NNN/`. Update maintained entry points to
 the actual location; historical packets remain snapshots. BLOCKED work stays active.
-Project closes only on explicit whole-project closure.
+Project closes only on explicit whole-project closure. Closure does not retroactively
+complete unexecuted assignments; retain their actual state and missing returns.
 
 ## Version changes
 
 Read the instance's declared version before mutation. Installation does not migrate
 projects. For an authorized upgrade, retain a recoverable old snapshot, preserve useful
-identity and work, then declare the new version. 0.3 and 0.4 records can keep their content
-in 0.5; archive ended Threads without rewriting old receipts. For other formats, preserve
+identity and work, then declare the new version. 0.3–0.5 records can keep their content
+in 0.6; archive ended Threads without rewriting old receipts. For other formats, preserve
 data and resolve conversion before protocol mutation; engineering work may continue
 within its own authority. No automatic migration of other projects.
 
 ## Optional integration
+
+Quota protection is off unless the user explicitly enables it. For “请按照额度规则……”
+or an enabled `rules.quota` in the project manifest, read the [quota reference](references/quota.md).
+It defines the opt-in, saving and recovery behavior; installation or discussing the
+rule does not enable it or create a schedule.
 
 For Codex–WorkBuddy scheduled collaboration, read the [WorkBuddy reference](references/workbuddy.md)
 only when that mode is in scope.

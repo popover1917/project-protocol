@@ -63,6 +63,8 @@ not fabricate its receipt. Before recovery writes affected shared files, establi
 that the previous writer has stopped and reconcile current and later work; otherwise
 keep outputs isolated. Continue under a new coordinator-authorized assignment.
 This process does not repair quota limits or guarantee future platform capacity.
+For user-enabled Codex quota protection, use the [quota reference](quota.md). Its
+thresholds and recovery schedule do not govern WorkBuddy's independent account.
 
 ## Business return and configuration closeout
 

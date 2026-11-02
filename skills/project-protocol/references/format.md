@@ -1,4 +1,4 @@
-# 0.5 file format
+# 0.6 file format
 
 Create files only as needed. Initialization needs a manifest, short PROJECT background
 and an AGENTS skill pointer. THREADS.md is an optional locator, not another state store.
@@ -19,13 +19,18 @@ and [AGENTS pointer](../templates/AGENTS.bootstrap.md).
 Use UTF-8 Markdown with YAML frontmatter for records, and this manifest shape:
 
 ```yaml
-protocol: {name: project-protocol, version: '0.5'}
+protocol: {name: project-protocol, version: '0.6'}
 project: {id: stable-project-id, title: Project title, status: ACTIVE}
 ```
 
 Project status is ACTIVE, PAUSED or CLOSED. Pausing/resuming follows user direction.
 PROJECT contains stable purpose, scope and relevant project-wide constraints; actual
 whole-project closure adds the result. Avoid duplicating live Thread progress here.
+
+Optional rules belong in the manifest only when needed. `rules.quota.enabled` is a
+Boolean, absent means false. Explicit project enablement writes true; explicit
+disablement writes false. See [quota rules](quota.md) for parameters and scope.
+Neither a copied example nor an old enabled snapshot grants current authority.
 
 THREAD frontmatter requires `id`, `title`, `status` (ACTIVE, BLOCKED, DONE or STOPPED).
 Its body supplies goal, current state, constraints, next action and finish conditions;
@@ -53,10 +58,12 @@ COMPLETION frontmatter identifies `handoff: TH-NNN/HO-NNN`, matching `project_id
 checks and limits, usable outputs and what remains. This is a receipt, not a second
 current-state document. See the [Completion template](../templates/COMPLETION.md).
 Save it beside the Handoff after execution, before Thread adopts the result.
+Distinguish accepted deliverables from editable source and the last reproducible
+baseline. Missing source or change evidence remains a stated version break.
 When reusing checks, identify their input/version and covered scope; unchanged bytes do
 not establish claims that were never checked.
 
 IDs match their directories and are not reused, including after archival. Moving a
 terminal Thread changes its location, not its outcome; retain its contents. Existing
-0.3/0.4 metadata and headings may stay. Optional fields and sections can be omitted when
+0.3–0.5 metadata and headings may stay. Optional fields and sections can be omitted when
 they add no information.

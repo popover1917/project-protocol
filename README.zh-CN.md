@@ -1,6 +1,6 @@
 # Project Protocol
 
-[English](README.md) · [技能入口](skills/project-protocol/SKILL.md) · 当前版本 **0.5**
+[English](README.md) · [技能入口](skills/project-protocol/SKILL.md) · 当前版本 **0.6**
 
 让工程工作跨 Agent、会话和时间继续的轻量 **Agent Skill**。只保存恢复工作所需的项目背景、当前工作与实际交接结果，支持工程接续、上下文恢复和多 Agent 交接。
 
@@ -55,11 +55,19 @@ $skill-installer install https://github.com/popover1917/project-protocol/tree/ma
 
 创建记录时按需查看[格式与模板](skills/project-protocol/references/format.md)。仅在采用 Codex–WorkBuddy 周期协作时读取 [WorkBuddy 参考](skills/project-protocol/references/workbuddy.md)；该参考不安装或配置 WorkBuddy。
 
+## 可选 Codex 额度保护
+
+额度规则默认关闭，仅适用于 Codex。提出“请按照额度规则继续这个项目”，可在当前项目的 `.project/project.yaml` 中启用 `rules.quota.enabled: true`；提出“关闭额度规则”会在相同范围将其关闭为 `false`。安装、升级或阅读这里的示例不会启用规则。
+
+默认在任一适用额度剩余 **≤14%** 时开始收尾；持续工作期间，在安全检查点检查，间隔最长 **5 分钟**。全部适用额度健康时继续执行已授权工作。恢复唤醒安排在触线窗口的实际重置时间后 **5 分钟**；多个窗口触线时取最晚重置时间。用户可以覆盖这些参数。这是执行约定，不是平台硬中断。
+
+只有实际调度工具可用且获准时，才安排唯一的本范围恢复唤醒；恢复前重新检查规则开关、当前授权及实际额度。范围、未知读数和恢复条件见[额度规则参考](skills/project-protocol/references/quota.md)。
+
 ## 目录与验证范围
 
-可安装的技能位于 `skills/project-protocol/`，共九个文件：`SKILL.md`、Codex 元数据、两个按需参考和五个模板。根目录说明不属于安装必需文件。
+可安装的技能位于 `skills/project-protocol/`，共十个文件：`SKILL.md`、Codex 元数据、三个按需参考和五个模板。新增额度参考为 `references/quota.md`。根目录说明不属于安装必需文件。
 
-本次公开发布保留 0.5 技能内容。检查范围限于文件保存读回与发行复制完整性，未运行行为测试、安装演练或 Fresh Agent 验证。
+本次公开发布保留 0.6 技能内容。检查范围限于文件保存读回与发行复制完整性，未运行行为测试、安装演练或 Fresh Agent 验证。
 
 ## 检索
 

@@ -1,6 +1,6 @@
 # Project Protocol
 
-[简体中文](README.zh-CN.md) · [Skill instructions](skills/project-protocol/SKILL.md) · Version **0.5**
+[简体中文](README.zh-CN.md) · [Skill instructions](skills/project-protocol/SKILL.md) · Version **0.6**
 
 An **Agent Skill** for keeping engineering work recoverable across agents and sessions. Maintain a small amount of project context, resume current work, and exchange execution handoffs with durable results.
 
@@ -55,6 +55,14 @@ Continuity records live under `.project/`. Engineering code, documents, and resu
 
 See the [file format and templates](skills/project-protocol/references/format.md) when creating records. Read the [optional WorkBuddy reference](skills/project-protocol/references/workbuddy.md) only for Codex–WorkBuddy scheduled collaboration; it does not install or configure WorkBuddy.
 
+## Optional Codex quota protection
+
+Quota protection is disabled by default and applies only to Codex. Ask “请按照额度规则继续这个项目” to enable it for the current project (`rules.quota.enabled: true` in `.project/project.yaml`); “关闭额度规则” disables it in the same scope (`false`). Installing, upgrading, or reading these examples does not enable the rule.
+
+Defaults: begin wrap-up when any applicable remaining limit is **at or below 14%**; check at safe checkpoints no more than **5 minutes** apart during continuous work. While all applicable limits remain healthy, continue authorized work. A recovery wake targets the triggering window's actual reset plus **5 minutes**; when several windows trigger, use the latest reset. Users may override these parameters. This is an operating agreement, not a platform-enforced hard interrupt.
+
+Arrange one scoped recovery wake only when a real scheduling tool is available and allowed. Before resuming, recheck the enabled rule, current authority, and actual capacity. See the [quota reference](skills/project-protocol/references/quota.md) for scope, unknown readings, and recovery gates.
+
 ## Repository layout
 
 ```text
@@ -63,6 +71,7 @@ skills/project-protocol/
 ├── agents/openai.yaml
 ├── references/
 │   ├── format.md
+│   ├── quota.md
 │   └── workbuddy.md
 └── templates/
     ├── AGENTS.bootstrap.md
@@ -72,7 +81,7 @@ skills/project-protocol/
     └── THREAD.md
 ```
 
-The installable skill contains nine files. It uses the `SKILL.md` Agent Skills format and includes Codex UI metadata. This repository publishes the 0.5 skill and installation documentation. Publication checks cover file readback and distribution integrity; behavioral tests, installation trials, and fresh-agent validation have not been run.
+The installable skill contains ten files. It uses the `SKILL.md` Agent Skills format and includes Codex UI metadata. This repository publishes the 0.6 skill and installation documentation. Publication checks cover file readback and distribution integrity; behavioral tests, installation trials, and fresh-agent validation have not been run.
 
 ## Discovery
 
