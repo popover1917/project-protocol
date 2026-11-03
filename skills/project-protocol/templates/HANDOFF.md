@@ -7,6 +7,8 @@ project_id: "{{project_id}}"
 
 {{scope_current_context_constraints_necessary_material_links_or_attachments_and_finish_conditions}}
 
+<!-- Identify the accepted inputs and any write-to-read dependencies. Bound preparation/trials when dependencies are not ready; carry forward the user's selected baseline. -->
+
 ## Return
 
 Save COMPLETION.md here after execution. The coordinating writer incorporates the

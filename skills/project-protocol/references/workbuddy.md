@@ -10,9 +10,9 @@ state registry or mandatory qualification-file schema is required.
 
 Confirm the actual project root, manifest identity, current Thread and assigned role.
 Locate any valid existing task definition and its real ID. Distinguish that definition
-from an actual run or instance; record available runtime identity and leave unavailable
-identity explicitly unknown. Names
-and conventional run-directory names do not establish identity.
+from an actual run or instance, and the assignment from each execution attempt.
+Record available runtime identity and leave unavailable identity explicitly unknown.
+Names and conventional run-directory names do not establish identity.
 
 Keep configuration evidence, actual trigger evidence and execution results separate.
 A saved schedule or a plausible next-trigger time does not prove that execution
@@ -21,8 +21,10 @@ is part of an authorized assignment.
 
 Separate first-time ordinary-session setup from the continuing prompt. An ordinary
 session may configure an authorized entry and execute a specifically assigned first
-package without claiming a scheduled trigger. The continuing prompt should locate
-current role permission and the current Handoff, rather than embed an old package.
+package without claiming a scheduled trigger. Choose one execution channel for that
+first package; do not dispatch it through both an ordinary session and a schedule.
+The continuing prompt should locate current role permission and the current Handoff,
+rather than embed an old package.
 Reuse a valid existing entry by default. Configure, replace or resume it only within
 current authority; historical settings do not authorize restoration.
 
@@ -33,11 +35,17 @@ location before executing. A recurring trigger is an opportunity to check permis
 not permission itself. Existing legitimate execution or a returned result awaiting
 acceptance does not become a new assignment on the next trigger.
 
+Distinguish a bounded business assignment from an ongoing role, with their lifetimes
+and exit conditions clear in current work. Finishing a package need not end the role;
+a standing role does not renew completed business. User stop and Project closure
+outrank old role permissions and recurring prompts.
+
 Confirm claiming and overlap-control capabilities against the actual platform and
 filesystem. Preserve existing legitimate assignment and execution evidence rather
 than overwrite it during a repeated trigger. Owner fields, hashes and memory are not
 strong locks; a check followed by a write does not establish atomic claiming. Do not
-promise strict at-most-once execution without demonstrated support.
+promise strict at-most-once execution without demonstrated support. Reusing a
+STARTED or claim record does not grant a new attempt or new execution authority.
 
 Before a consequential save, recheck current authority and affected inputs. On
 conflicting identity, revoked permission or input drift, stop the affected formal
@@ -50,6 +58,8 @@ With no eligible assignment, read only the necessary current permission and fini
 the check. Do not scan broad history, repeatedly compare an unchanged fixed prompt,
 rehash unrelated artifacts or append empty polling logs and memory entries.
 If the runtime requires memory, keep only the information needed for continuity.
+Unchanged state creates no new coordination event requiring another party's
+acknowledgment.
 
 When execution activity remains unconfirmed, use the project's agreed observation
 boundary for one limited diagnosis. Check only the bound run, necessary artifacts

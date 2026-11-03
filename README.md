@@ -1,10 +1,14 @@
 # Project Protocol
 
-[简体中文](README.zh-CN.md) · [Skill instructions](skills/project-protocol/SKILL.md) · Version **0.6**
+[简体中文](README.zh-CN.md) · [Skill instructions](skills/project-protocol/SKILL.md) · Version **0.7**
 
 An **Agent Skill** for keeping engineering work recoverable across agents and sessions. Maintain a small amount of project context, resume current work, and exchange execution handoffs with durable results.
 
 Use it for project continuity, session recovery, agent handoffs, and ongoing engineering work. Ordinary questions and bounded edits need no protocol records.
+
+## What's changed in 0.7
+
+Specific requests map to artifacts, versions, adopted parts, and remaining gaps. Constraints retain their source and scope so advice does not silently become a gate; downstream work preserves user-selected versions. Corrected review findings withdraw or narrow dependent assignments. Parallel work considers write-to-read dependencies and consumes accepted, fixed inputs. Changed related facts can invalidate a check even when file bytes are unchanged. DONE/PARTIAL describe execution separately from acceptance. Scheduled collaboration uses one dispatch channel to start an assignment and distinguishes an individual run from the lifetime and exit conditions of a continuing responsibility.
 
 ## Install
 
@@ -81,7 +85,7 @@ skills/project-protocol/
     └── THREAD.md
 ```
 
-The installable skill contains ten files. It uses the `SKILL.md` Agent Skills format and includes Codex UI metadata. This repository publishes the 0.6 skill and installation documentation. Publication checks cover file readback and distribution integrity; behavioral tests, installation trials, and fresh-agent validation have not been run.
+The installable skill contains ten files. It uses the `SKILL.md` Agent Skills format and includes Codex UI metadata. This repository publishes the 0.7 skill and installation documentation. Publication checks cover file readback and distribution integrity; behavioral tests, installation trials, and fresh-agent validation have not been run.
 
 ## Discovery
 

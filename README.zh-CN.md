@@ -1,10 +1,14 @@
 # Project Protocol
 
-[English](README.md) · [技能入口](skills/project-protocol/SKILL.md) · 当前版本 **0.6**
+[English](README.md) · [技能入口](skills/project-protocol/SKILL.md) · 当前版本 **0.7**
 
 让工程工作跨 Agent、会话和时间继续的轻量 **Agent Skill**。只保存恢复工作所需的项目背景、当前工作与实际交接结果，支持工程接续、上下文恢复和多 Agent 交接。
 
 普通查询和局部小修改无需创建协议记录。
+
+## 本版改进
+
+0.7把用户具体请求对应到产物/版本、已采用部分与缺项；记录有效约束的来源与范围，避免建议变成门槛，保留用户已选版本。审查发现更正后，同步撤销或缩小依赖任务。并行安排考虑写→读依赖，消费已接受的固定输入；关联事实变化会使既有检查失效，即使文件未变。DONE/PARTIAL描述执行结果，成果认可另行说明。周期协作以单一通道首发，区分单次执行与持续职责的寿命、退出条件。
 
 ## 安装
 
@@ -65,9 +69,9 @@ $skill-installer install https://github.com/popover1917/project-protocol/tree/ma
 
 ## 目录与验证范围
 
-可安装的技能位于 `skills/project-protocol/`，共十个文件：`SKILL.md`、Codex 元数据、三个按需参考和五个模板。新增额度参考为 `references/quota.md`。根目录说明不属于安装必需文件。
+可安装的技能位于 `skills/project-protocol/`，共十个文件：`SKILL.md`、Codex 元数据、三个按需参考和五个模板。额度参考为 `references/quota.md`，沿用0.6。根目录说明不属于安装必需文件。
 
-本次公开发布保留 0.6 技能内容。检查范围限于文件保存读回与发行复制完整性，未运行行为测试、安装演练或 Fresh Agent 验证。
+本次公开发布保留 0.7 技能内容。检查范围限于文件保存读回与发行复制完整性，未运行行为测试、安装演练或 Fresh Agent 验证。
 
 ## 检索
 

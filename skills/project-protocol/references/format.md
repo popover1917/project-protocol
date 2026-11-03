@@ -1,4 +1,4 @@
-# 0.6 file format
+# 0.7 file format
 
 Create files only as needed. Initialization needs a manifest, short PROJECT background
 and an AGENTS skill pointer. THREADS.md is an optional locator, not another state store.
@@ -19,7 +19,7 @@ and [AGENTS pointer](../templates/AGENTS.bootstrap.md).
 Use UTF-8 Markdown with YAML frontmatter for records, and this manifest shape:
 
 ```yaml
-protocol: {name: project-protocol, version: '0.6'}
+protocol: {name: project-protocol, version: '0.7'}
 project: {id: stable-project-id, title: Project title, status: ACTIVE}
 ```
 
@@ -37,6 +37,11 @@ Its body supplies goal, current state, constraints, next action and finish condi
 section names may vary. DONE records actual completion; BLOCKED names the missing
 prerequisite; STOPPED records the user's stop decision. Keep the terminal result.
 
+For multiple explicit requests, existing work can briefly map each to its output,
+version, adoption and remaining gap. Keep important constraints' sources/scopes and
+the user's selected baseline clear. These are body details, not mandatory new fields
+or a separate registry; a small task needs no table.
+
 `owner`, `materials` and `latest_handoff` are optional conveniences. Owner identifies
 the coordinating role. A handoff pointer locates an assignment, not every parallel
 assignment; current work can name others when needed. Materials may be ordinary links
@@ -52,18 +57,30 @@ conditions and return location. Date and material metadata are optional. See the
 HANDOFF.md is the assignment entry. Necessary images, configurations, logs or other
 materials may be linked or included; existing stable engineering paths need no duplicate
 package. Confirm that the receiving context can access what the assignment needs.
+Name inputs another writer could change and the accepted version to consume. If only
+preparation or a trial is authorized before a dependency is ready, state its limits;
+file existence or an upstream executor's DONE alone does not establish acceptance.
 
 COMPLETION frontmatter identifies `handoff: TH-NNN/HO-NNN`, matching `project_id`, and
 `outcome: DONE | PARTIAL | BLOCKED` for that assignment. Its body states actual work,
 checks and limits, usable outputs and what remains. This is a receipt, not a second
 current-state document. See the [Completion template](../templates/COMPLETION.md).
 Save it beside the Handoff after execution, before Thread adopts the result.
+Outcome describes the assignment, not acceptance of everything it inspected. A review
+may be DONE with revisions required; PARTIAL may contain usable results. The
+coordinator names the adopted outputs/versions and remaining issues in current work.
+For corrections or continued execution, preserve the published return and link a new
+return or supplement; update affected current plans without rewriting old findings.
 Distinguish accepted deliverables from editable source and the last reproducible
 baseline. Missing source or change evidence remains a stated version break.
 When reusing checks, identify their input/version and covered scope; unchanged bytes do
-not establish claims that were never checked.
+not establish claims that were never checked. Changes to referenced objects,
+dependencies or use conditions can also invalidate a previously checked statement
+whose own file is unchanged. Recheck the affected conclusions within user limits,
+not every unchanged artifact. Neither match counts nor all-PASS summaries substitute
+for checking the specific claim and its supporting context.
 
 IDs match their directories and are not reused, including after archival. Moving a
 terminal Thread changes its location, not its outcome; retain its contents. Existing
-0.3–0.5 metadata and headings may stay. Optional fields and sections can be omitted when
+0.3–0.6 metadata and headings may stay. Optional fields and sections can be omitted when
 they add no information.
